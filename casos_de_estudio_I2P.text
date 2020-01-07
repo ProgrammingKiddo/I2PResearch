@@ -7,9 +7,9 @@
 %\usepackage{listings}
 
 
-\title{Red AnÛnima I2P}
-\author{Borja Fern·ndez Merch·n \\ AndrÈs Gomar PÈrez \\ Carlos Rodrigo Sanabria Flores \\ Sergio Ruiz Pino
- \\ Iv·n PiÒa ArÈvalo}
+\title{Red An√≥nima I2P}
+\author{Borja Fern√°ndez Merch√°n \\ Andr√©s Gomar P√©rez \\ Carlos Rodrigo Sanabria Flores \\ Sergio Ruiz Pino
+ \\ Iv√°n Pi√±a Ar√©valo}
 \date{\today}
 
 \begin{document}
@@ -18,42 +18,50 @@
 \section{Casos de estudio en el que se aplica la plataforma/tecnologia I2P}
 
 En el caso de la web, el ideal no cambia, es decir, lo que se busca es usar
-comunicaciones cifradas para mantener la privacidad de las p·ginas que visitan 
+comunicaciones cifradas para mantener la privacidad de las p√°ginas que visitan 
 los usuarios mediante saltos entre los nodos de la red.
 
-Hay que destacar que en cuanto a las diferentes tecnologÌas actuales, si lo que
-queremos es conectarnos a internet a modo de proxy,  Tor es m·s eficiente que I2P,
-desventaja de Èsta ˙ltima que la hace m·s privada que las dem·s tecnologÌas al tener
-menos usuarios siendo mas resistente a ataques hacia la privacidad.
+Hay que destacar que en cuanto a las diferentes tecnolog√≠as actuales, si lo que
+queremos es conectarnos a internet a modo de proxy,  Tor es m√°s eficiente que I2P,
+desventaja de √©sta √∫ltima que la hace m√°s privada que las dem√°s tecnolog√≠as al tener
+menos usuarios siendo mas resistente a ataques hacia la privacidad.[1]
 
-Hay actualmente diversos estudios de investigaciÛn referente a la confiabilidad y 
-seguridad de las comunicaciones que se producen en el dÌa a dÌa.
-Existe una gran preocupaciÛn que concierne a los programas de vigilancia en la web
-aplicados en plataformas como Facebook, amazon, Google Ö
-Esto ha llevado a un colectivo a realizaciÛn investigaciones para ver de que manera
+Hay actualmente diversos estudios de investigaci√≥n referente a la confiabilidad y 
+seguridad de las comunicaciones que se producen en el d√≠a a d√≠a.
+Existe una gran preocupaci√≥n que concierne a los programas de vigilancia en la web
+aplicados en plataformas como Facebook, amazon, Google ‚Ä¶
+Esto ha llevado a un colectivo a realizaci√≥n investigaciones para ver de que manera
 se puede proteger la integridad de los datos. El objetivo de estas investigaciones a
 llevado a obtener soluciones que nos permitan transferir datos sin que haya terceros
-en la red que puedan interceptar Èstos.
-Una soluciÛn propuesta es usar tecnologÌa I2P para asegurar las comunicaciones en la
-red. Enviamos paquetes desde uno de los t˙neles de salida hacia un t˙nel de entrada 
-impidiendo que nadie puede interceptarlos salvo el receptor del paquete.
+en la red que puedan interceptar √©stos.
+Una soluci√≥n propuesta es usar tecnolog√≠a I2P para asegurar las comunicaciones en la
+red. Enviamos paquetes desde uno de los t√∫neles de salida hacia un t√∫nel de entrada 
+impidiendo que nadie puede interceptarlos salvo el receptor del paquete.[2]
 
-Un ejemplo de implementaciÛn de I2P es el aseguramiento de privacidad en las 
+Un ejemplo de implementaci√≥n de I2P es el aseguramiento de privacidad en las 
 comunicaciones sobre internet.
-La apariciÛn de nuevas tecnologÌas ha conllevado la preocupaciÛn de colectivos
-centrados en la privacidad de los datos que se tratan en la red en un ·mbito p˙blico
+La aparici√≥n de nuevas tecnolog√≠as ha conllevado la preocupaci√≥n de colectivos
+centrados en la privacidad de los datos que se tratan en la red en un √°mbito p√∫blico
 o privado.
 
-El proyecto I2P se encuentra en auge y continua evoluciÛn para garantizarnos el 100%
-de seguridad e integridad de los datos y paquetes que se manejan en la red. …ste se 
-es resistente a ataques masivos posibilitando la ejecuciÛn de varias aplicaciones a 
+El proyecto I2P se encuentra en auge y continua evoluci√≥n para garantizarnos el 100%
+de seguridad e integridad de los datos y paquetes que se manejan en la red. √âste se 
+es resistente a ataques masivos posibilitando la ejecuci√≥n de varias aplicaciones a 
 la vez ya que consta de varios modelos a nivel de seguridad y rendimiento para cada 
-usuario que aplican esta tecnologÌa. Las aplicaciones que se basan en esta tecnologÌa
-se usan b·sicamente en internet, en la secciÛn de navegaciÛn web anonimo por ejemplo.
+usuario que aplican esta tecnolog√≠a. Las aplicaciones que se basan en esta tecnolog√≠a
+se usan b√°sicamente en internet, en la secci√≥n de navegaci√≥n web anonimo por ejemplo.[3]
+
+
+Referencias
+[1] https://www.genbeta.com/actualidad/i2p-la-nueva-generacion-de-la-deep-web
+[2] http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S2218-36202017000200014
+[3] http://repositorio.ug.edu.ec/bitstream/redug/17047/1/UG-FCMF-B-CINT-PTG-N.106.pdf
+
+
 
 
 \end{document}
-© 2020 GitHub, Inc.
+¬© 2020 GitHub, Inc.
 Terms
 Privacy
 Security
