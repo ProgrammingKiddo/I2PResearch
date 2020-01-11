@@ -27,7 +27,7 @@ esclarecedor para entender.
 
 Supongamos a un activista, dicho activista está en contra de las medidas que se están tomando en su país contra 
 la fauna y flora que habita allí. Sin embargo, debido a las relaciones diplomáticas con los países de su alrededor
-y a la represión mediática, dicha información no traspasa las fronteras nacionales, impidiendo que se sepa las desastrosas 
+y a la represión mediática, dicha información no traspasa las fronteras nacionales, impidiendo que se sepan las desastrosas 
 decisiones que se están llevando a cabo. En este caso lo más importante para el activista no es la información en si misma 
 ya que la conocen centenares o miles de personas. Lo más importante es que no se conozca su verdadera identidad ya que 
 automáticamente seria localizado y según la normativa del país podría incluso ser ejecutado. 
@@ -46,6 +46,21 @@ empleadas reducimos el número de posibles amenazas, en otras palabras, podemos 
 Por los motivos mencionados anteriormente y el momento actual en el que vivimos, realizar un estudio acerca de una tecnología que 
 pone su enfoque en la privacidad del usuario resulta esperanzador. Por supuesto es un arma de doble filo ya que puede ser empleada con fines 
 perversos, pero no deja de ser una herramienta, todo depende del uso que queramos hacer de ella.
+
+
+\section{Descripción de la tecnología I2P}
+
+I2P (\textit{Invisible Internet Project}) es lo que se conoce como una capa de red anónima P2P. Esto es, una red \textbf{descentralizada}, basada en el empleo de múltiples nodos anónimos interconectados
+que hacen posible la comunicación entre dos usuarios; cabe destacar la palabra "capa", pues I2P es lo que se conoce como un \textit{overlay network}, una red funcionando encima de otra red. Es un concepto
+de capas con mucha similitud a la estructura de una cebolla, como veremos más adelante.
+
+El principal objetivo del proyecto es proteger el anonimato de los usuarios de la red. Para esto, se utilizan una serie de servidores \textit{proxy} intermedios llamados \textit{mixers} que proporcionan múltiples
+capas de seguridad a la comunicación. De forma breve, el papel de los mixer consiste en recibir un mensaje, que viene cifrado especialmente para ellos, y enviarlo al siguiente destinatario (probablemente otro mixer).
+El sistema funciona y otorga anonimato por hacer irrastreable al emisor original, ya que cada \texit{mixer} solo tiene información del siguiente punto de envío, de forma que ninguno de ellos conoce
+ni el mensaje, ni la procedencia, ni la ruta completa.
+
+
+
 
 \section{Casos de estudio en el que se aplica la plataforma/tecnologia I2P}
 
