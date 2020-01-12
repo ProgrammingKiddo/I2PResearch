@@ -136,6 +136,25 @@ La aparición de nuevas tecnologías ha conllevado la preocupación de colectivo
 El proyecto I2P se encuentra en auge y continua evolución para garantizarnos el 100 por ciento de seguridad e integridad de los datos y paquetes que se manejan en la red. Éste se  es resistente a ataques masivos posibilitando la ejecución de varias aplicaciones a 
 la vez ya que consta de varios modelos a nivel de seguridad y rendimiento para cada usuario que aplican esta tecnología. Las aplicaciones que se basan en esta tecnología se usan básicamente en internet, en la sección de navegación web anonimo por ejemplo.[3]
 
+\subsection{Script para transformar direcciones de i2p en una mas pequeña}
+
+ El siguiente script transforma direcciones de base64 de 500 caracteres a b32.i2p :
+ 
+ #!/usr/bin/env python3
+import base64, hashlib, sys
+
+if len(sys.argv) != 2:
+  print('Usage: convertkey.py <base64key>')
+  sys.exit(1)
+
+key = sys.argv[1]
+raw_key = base64.b64decode(key, '-~')
+hash = hashlib.sha256(raw_key)
+base32_hash = base64.b32encode(hash.digest())
+print(base32_hash.lower().decode("utf-8").replace("=", "") + ".b32.i2p")
+ 
+ 
+
 \pagebreak
 
 \section{Trabajos relacionados de la plataforma/tecnología I2P}
