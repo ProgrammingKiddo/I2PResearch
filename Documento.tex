@@ -93,7 +93,30 @@ el resultado sería el siguiente: \[K_m_1(R_2, K_m_2(R_1, K_b(R_0, mensaje), B),
 \subsection{Implementación de I2P}
 
 La red I2P implementa este sistema de redes \textit{mix} por medio de voluntarios que ofrecen sus ordenadores para actuar como nodos. Cualquier ordenador puede convertirse en un nodo de la red
-I2P simplemente instalando el software "I2P router" [8]
+I2P simplemente instalando el software "I2P router" [8], que puede consumir tan poco como 128MB de memoria RAM, pudiendo correr incluso en una modesta Raspberry Pi [9].
+Dado que cada nodo conoce tan solo la dirección del siguiente nodo (o del destinatario de un mensaje, en caso del último nodo), rastrear una conexión es prácticamente imposible, y puesto que el camino
+hacia el destinatario está también encriptado, y cada paso del mismo es conocido solo por cada nodo, interceptar el mensaje al principio tampoco aporta información sobre el mismo.
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{media/I2P Router Console.png}
+    \caption{Captura de la consola del router I2P.}
+    \label{fig2}
+\end{figure}
+
+Para añadir seguridad adicional al sistema de redes \textit{mix}, la red I2P implementa una versión mejorada del concepto de "\textit{onion routing}" llamado, de forma socarrona, "\textit{garlic routing}",
+haciendo referencia a su modo de funcionamiento, mediante el cual se empaquetan varios mensajes dirigidos a un mismo destinatario (de ahí el simil con los dientes de ajo),
+de forma que se hace imposible, incluso si se atrapa el "ajo" al completo, averiguar el contenido de cada mensaje individual.
+Dado que el sistema se basa estrictamente en el sistema de paso de mensajes (como las comunicaciones IP), han añadido librerías que emulan el funcionamiento de otros protocolos más complejos,
+que permiten llevar a cabo labores de \textit{streaming} (de forma parecida a TCP).
+
+En la actualidad, el proyecto I2P ofrece clientes para multitud de sistemas operativos: Windows, Mac OSX, Debian/Ubuntu, Solaris, GNU/Linux, Android, y BSD; dado que todo el software
+(al ser una capa de abstracción que corre por encima de las redes normales) es ejecutado sobre una máquina virtual de Java (\textit{JRE 7+}) goza de una fácil portabilidad.
+
+\begin{figure}
+    \includegraphics[]{media/I2P Android Console.png}
+    \caption{Captura del cliente de Android I2P.}
+    \label{fig3}
+\end{figure}
 
 
 \section{Casos de estudio en el que se aplica la plataforma/tecnologia I2P}
@@ -158,6 +181,9 @@ permiten nuestro anonimato, protegiendo así nuestra identidad y nuestra activid
 [5] https://www.ghacks.net/2007/06/06/anonymous-bittorrent-with-i2psnark/
 [6] https://es.wikipedia.org/wiki/Bitmessage#Bitmessage.ch
 [7] https://dl.acm.org/doi/10.1145/358549.358563
+[8] https://geti2p.net/en/download
+[9] https://geti2p.net/en/faq#systems
+
 
 
 
