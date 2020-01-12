@@ -146,25 +146,102 @@ Al ser  I2P una capa de abstracción para asegurar comunicaciones anónimas,exis
 Destacamos que la existencia de los siguientes software tiene como objetivo preservar nuestro anonimato en la red,y que el objetivo de estos no es solo preservar
 el anonimato, sino que sean compatible con otros protocolos de red, así podemos usar aplicaciones en red,que de otra forma, seriamos rastreables,
 a continuación explicaremos tres software,que consideramos que su en I2P  es indispensable.
-
 \subsection{I2PTunnel[4]}
 
 Es una herramienta que permite la comunicación sobre I2P, a aplicaciones TCP/IP,su funcionalidad se basa en la creación de tuneles que pueden ser accedidos
-conectandonos a puertos.
+conectandonos a puertos.Esta aplicación existe para poder comunicarnos con aplicaciones que usen TCP/IP de forma anonima , es una ventaja ya que si usaramos la aplicación TCP/IP de forma 'normal'
+nuestro anonimato no estaría asegurado,
+\\
+
+Para configurar I2PTunnel debemos modificar el fichero tunnels.conf,este archivo utiliza el formato de archivo .ini y está diseñado para soportar múltiples túneles I2P. El archivo 
+de configuración debe ubicarse en  ~/.i2pd (por usuario) o /var/lib/i2pd (en todo el sistema),podemos configurar tuneles http, udp, servidor y cliente.Los tuneles tienen los 
+siguientes parametros.
+\\
+
+
+\subsubsection{Opciones de configuración de tunnels.conf[11]}
+inbound.length: número de saltos de un túnel entrante. 3 por defecto; menor valor es más rápido pero peligroso
+\\
+
+outbound.length: número de saltos de un túnel de salida. 3 por defecto; menor valor es más rápido pero peligroso
+\\
+
+inbound.quantity: número de túneles de entrada. 5 por defecto
 
 \\
-Esta aplicación existe para poder comunicarnos con aplicaciones que usen TCP/IP de forma anonima , es una ventaja ya que si usaramos la aplicación TCP/IP de forma 'normal'
-nuestro anonimato no estaría asegurado.
+outbound.quantity: número de túneles de salida. 5 por defecto
+\\
 
+crypto.tagsToSend: número de etiquetas ElGamal / AES para enviar. 40 por defecto; un valor demasiado bajo puede causar problemas con la construcción del túnel
+\\
+
+explicitPeers: lista de direcciones b64 separadas por comas de pares para usar, valor predeterminado: sin establecer
+\\
+
+i2p.streaming.initialAckDelay: milisegundos a esperar antes de enviar Ack. 200 por defecto
+\\
+
+i2cp.leaseSetType: tipo de LeaseSet que se enviará. 1, 3 o 5. 1 por defecto
+\\
+
+i2cp.leaseSetEncType: tipo de cifrado que se utilizará en LeaseSet tipo 3. Tipo de identidad por defecto
+\\
+
+i2cp.leaseSetPrivKey: clave de descifrado para LeaseSet cifrado en base64. PSK o DH privado
+\\
+
+i2cp.leaseSetAuthType: tipo de autenticación para LeaseSet cifrado. 0: sin autenticación (predeterminado), 1: DH, 2: PSK
+\\
+
+i2cp.leaseSetClient.dh.nnn - nombre del cliente: DH público del cliente en base64, para el tipo de autenticación 1, nnn es entero
+\\
+
+i2cp.leaseSetClient.psk.nnn - nombre del cliente: PSK del cliente en base64, para el tipo de autenticación 2, nnn es entero 
 \subsection{I2PSnark[5]}
-
 Permite conectarnos a redes p2p de forma totalmente anonima,ya que si no usamos I2P, y nos conectamos a una red p2p, seriamos rastreables.
 \\
 
-Su funcionamiento es similar a un cliente de torrent,agregamos torrent y estos se descargan conectandonos a la red p2p donde se localizen los archivos a descargar
+Su funcionamiento es similar a un cliente de torrent,agregamos torrent y estos se descargan conectandonos a la red p2p donde se localizen los archivos a descargar,a continuación 
+una guia para proceder a su instalación y uso:
+\\
+
+1) Descargue el instalador I2P para Windows o Linux
+\\
+
+2) Instale la aplicación. Simplemente ejecute el ejecutable en Windows o instale desde terminal en linux.
+\\
+
+3) Vaya al menú de inicio y abra la carpeta I2P allí. Haga clic en init I2P.
+\\
+
+4) Tiene que configurar un proxy local. Lo hara de la siguiente manera según su navegador:
+\\
+
+4.1) Firefox: vaya a Herramientas> Opciones. Haga clic en Avanzado> Red y seleccione el botón Configuración de Conexión. Verifique la Configuración manual del proxy y agregue localhost como HTTP Proxy y el puerto que usted decida.
+\\
+
+4.2) Edge:haga clic en Herramientas> Opciones de Internet. Seleccione Conexiones  y haga clic en el botón Configuración de LAN. Active Usar un servidor proxy e ingrese Localhost y puerto que usted decida.
+\\
+
+4.3) Opera: Seleccione Herramientas> Preferencias y haga clic en la pestaña Avanzado. Elija la red del menú y haga clic en los botones Servidores Proxy. Agregue localhost y el puerto que usted decida al HTTP y todos los demás protocolos que desee usar.
+\\
+
+5) Visite http:// localhost: 7657/index.jsp para cargar la interfaz principal. Tiene muchas opciones, elija iniciar el cliente anónimo bittorrent.
+\\
+
+6) Haga clic en I2PSnark en el encabezado para cargar la interfaz bittorrent
+\\
+
+7)Para descargar archivos de la red p2p  cargue el torrent, en el apartado add torrent , añadiendo la url de dicho torrent o cargando el archivo torrent desde nuestro pc.
+
+\begin{figure}
+    \includegraphics[]{media/i2p_3.jpg}
+    \caption{Captura de I2PSnark.}
+    \label{fig4}
+\end{figure}
+
 
 \subsection{PyBitmessage[6]}
-
 Es un servicio de correo electrónico que permite recibir o enviar bitmessages a traves de I2P,funciona cifrando todos los mensajes de entrada y salida
 usando criptografía asimétrica de modo que solo receptor es capaz de poder descifrar el mensaje del emisor.
 \\
@@ -173,10 +250,16 @@ Destacamos que permite enviar correo a traves de internet,Tor e I2P y ofrece web
 pero con las ventajas de que la comunicación entre  emisor y receptor es confidencial, está asegurada la confidencialidad de dicha comunicación.  
 \\
 
+Para usar PyBitMessage  primero instalamos las siguientes dependencias : python2.7,python2-qt4 (python-qt4 en ubuntu),openssl.(si usamos  Fedora y Redhat añadir openssl-compat-bitcoin-libs}.
+\\
+
+Tras instalar las dependencias podemos ejecutar PyBitmessage de dos,descargamos PyBitmessage y ejecutamos directamente python desde el código fuente o a través de un paquete 
+instalable en en el sistema. Dado que PyBitmessage es Beta, es mejor  ejecutar PyBitmessage desde el código fuente, para que pueda actualizarse si fuese necesario.
+
 \begin{figure}
     \includegraphics[]{media/PyBitMessage-client.png}
     \caption{Captura de pyBitmessage.}
-    \label{fig4}
+    \label{fig5}
 \end{figure}
 
 Estos son unos  ejemplos de los muchos software que existen , que usan I2P ,pero actualmente existen muchos software que esta en continua desarrollo debido a que 
@@ -204,6 +287,7 @@ permiten nuestro anonimato, protegiendo así nuestra identidad y nuestra activid
 [8] https://geti2p.net/en/download
 [9] https://geti2p.net/en/faq#systems
 [10] https://arstechnica.com/information-technology/2015/01/under-the-hood-of-i2p-the-tor-alternative-that-reloaded-silk-road/
+[11] https://i2pd.readthedocs.io/en/latest/user-guide/tunnels/
 
 
 
