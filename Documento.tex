@@ -60,11 +60,12 @@ El principal objetivo del proyecto es proteger el anonimato de los usuarios de l
 \subsection{Redes Mix}
 El concepto de las redes mix existe desde 1981 [7] se utilizan una serie de servidores \textit{proxy} intermedios llamados \textit{mix} que proporcionan múltiples
 capas de seguridad a la comunicación. De forma breve, el papel de los \textit{mix} consiste en recibir un mensaje, que viene cifrado especialmente para ellos,
-y enviarlo al siguiente destinatario (probablemente otro \texti{mix}).
-El sistema funciona y otorga anonimato por hacer irrastreable al emisor original, ya que cada \texit{mix} solo tiene información del siguiente punto de envío, de forma que ninguno de ellos conoce
+y enviarlo al siguiente destinatario (probablemente otro \textit{mix}).
+El sistema funciona y otorga anonimato por hacer irrastreable al emisor original, ya que cada \textit{mix} solo tiene información del siguiente punto de envío, de forma que ninguno de ellos conoce
 ni el mensaje, ni la procedencia, ni la ruta completa.
 
 \begin{figure}
+    \centering
     \includegraphics[width=\linewidth]{media/Mix Network.png}
     \caption{Funcionamiento de una red Mix.}
     \label{fig1}
@@ -88,7 +89,7 @@ Ahora, A debe enviar el mensaje a un \textit{mix}. La confidencialidad de B es p
 Dependiendo del número de \textit{mix} que vaya a recorrer el mensaje, tantas capas adicionales tendrá. Dado que cada capa solo puede ser desbloqueada por un \textit{mix} concreto, interceptar
 el mensaje carece de utilidad alguna para el hipotético atacante, C. Para añadir saltos adicionales, basta con repetir el procedimiento que hemos explicado: se añade una sal aleatoria, y la dirección
 del siguiente \textit{mix} en la cadena, y luego se encripta con la clave pública del mismo. De esta forma, si A quisiese enviar su mensaje primero por \textit{mix} 1, y luego por \textit{mix} 2,
-el resultado sería el siguiente: \[K_m_1(R_2, K_m_2(R_1, K_b(R_0, mensaje), B), M_2)\]
+el resultado sería el siguiente: \[K_m(R_2, K_b(R_1, K_b(R_0, mensaje), B), M_2)\]
 
 \subsection{Implementación de I2P}
 
@@ -97,7 +98,8 @@ I2P simplemente instalando el software "I2P router" [8], que puede consumir tan 
 Dado que cada nodo conoce tan solo la dirección del siguiente nodo (o del destinatario de un mensaje, en caso del último nodo), rastrear una conexión es prácticamente imposible, y puesto que el camino
 hacia el destinatario está también encriptado, y cada paso del mismo es conocido solo por cada nodo, interceptar el mensaje al principio tampoco aporta información sobre el mismo.
 
-\begin{figure}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=\linewidth]{media/I2P Router Console.png}
     \caption{Captura de la consola del router I2P.}
     \label{fig2}
@@ -112,7 +114,8 @@ que permiten llevar a cabo labores de \textit{streaming} (de forma parecida a TC
 En la actualidad, el proyecto I2P ofrece clientes para multitud de sistemas operativos: Windows, Mac OSX, Debian/Ubuntu, Solaris, GNU/Linux, Android, y BSD; dado que todo el software
 (al ser una capa de abstracción que corre por encima de las redes normales) es ejecutado sobre una máquina virtual de Java (\textit{JRE 7+}) goza de una fácil portabilidad.
 
-\begin{figure}
+\begin{figure}[H]
+    \centering
     \includegraphics[]{media/I2P Android Console.png}
     \caption{Captura del cliente de Android I2P.}
     \label{fig3}
@@ -140,7 +143,7 @@ la vez ya que consta de varios modelos a nivel de seguridad y rendimiento para c
 
  El siguiente script transforma direcciones de base64 de 500 caracteres a b32.i2p :
  
- #!/usr/bin/env python3
+ \#!/usr/bin/env python3
 import base64, hashlib, sys
 
 if len(sys.argv) != 2:
@@ -148,11 +151,10 @@ if len(sys.argv) != 2:
   sys.exit(1)
 
 key = sys.argv[1]
-raw_key = base64.b64decode(key, '-~')
-hash = hashlib.sha256(raw_key)
-base32_hash = base64.b32encode(hash.digest())
-print(base32_hash.lower().decode("utf-8").replace("=", "") + ".b32.i2p")
- 
+raw\_key = base64.b64decode(key, '-~')
+hash = hashlib.sha256(raw\_key)
+base32\_hash = base64.b32encode(hash.digest())
+print(base32\_hash.lower().decode("utf-8").replace("=", "") + ".b32.i2p")
  
 
 \pagebreak
@@ -186,8 +188,8 @@ outbound.length: número de saltos de un túnel de salida. 3 por defecto; menor 
 \\
 
 inbound.quantity: número de túneles de entrada. 5 por defecto
-
 \\
+
 outbound.quantity: número de túneles de salida. 5 por defecto
 \\
 
@@ -254,7 +256,8 @@ una guia para proceder a su instalación y uso:
 7)Para descargar archivos de la red p2p  cargue el torrent, en el apartado add torrent , añadiendo la url de dicho torrent o cargando el archivo torrent desde nuestro pc.
 \\
 
-\begin{figure}
+\begin{figure}[H]
+    \centering
     \includegraphics[]{media/i2p_3.jpg}
     \caption{Captura de I2PSnark.}
     \label{fig4}
@@ -277,7 +280,7 @@ Tras instalar las dependencias podemos ejecutar PyBitmessage de dos formas,desca
 instalable en en el sistema. Dado que PyBitmessage es Beta, es mejor  ejecutar PyBitmessage desde el código fuente, para que pueda actualizarse si fuese necesario.
 \\
 
-\begin{figure}
+\begin{figure}[H]
     \includegraphics[]{media/PyBitMessage-client.png}
     \caption{Captura de pyBitmessage.}
     \label{fig5}
@@ -299,14 +302,14 @@ permiten nuestro anonimato, protegiendo así nuestra identidad y nuestra activid
 \section{Referencias}
 
 [1] https://www.genbeta.com/actualidad/i2p-la-nueva-generacion-de-la-deep-web
-[2] http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S2218-36202017000200014
+[2] http://scielo.sld.cu/scielo.php?script=sci\_arttext\&pid=S2218-36202017000200014
 [3] http://repositorio.ug.edu.ec/bitstream/redug/17047/1/UG-FCMF-B-CINT-PTG-N.106.pdf
 [4] https://geti2p.net/es/docs/api/i2ptunnel
 [5] https://www.ghacks.net/2007/06/06/anonymous-bittorrent-with-i2psnark/
-[6] https://es.wikipedia.org/wiki/Bitmessage#Bitmessage.ch
+[6] https://es.wikipedia.org/wiki/Bitmessage\#Bitmessage.ch
 [7] https://dl.acm.org/doi/10.1145/358549.358563
 [8] https://geti2p.net/en/download
-[9] https://geti2p.net/en/faq#systems
+[9] https://geti2p.net/en/faq\#systems
 [10] https://arstechnica.com/information-technology/2015/01/under-the-hood-of-i2p-the-tor-alternative-that-reloaded-silk-road/
 [11] https://i2pd.readthedocs.io/en/latest/user-guide/tunnels/
 
