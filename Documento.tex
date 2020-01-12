@@ -47,6 +47,7 @@ Por los motivos mencionados anteriormente y el momento actual en el que vivimos,
 pone su enfoque en la privacidad del usuario resulta esperanzador. Por supuesto es un arma de doble filo ya que puede ser empleada con fines 
 perversos, pero no deja de ser una herramienta, todo depende del uso que queramos hacer de ella.
 
+\pagebreak
 
 \section{Descripción de la tecnología I2P}
 
@@ -54,12 +55,45 @@ I2P (\textit{Invisible Internet Project}) es lo que se conoce como una capa de r
 que hacen posible la comunicación entre dos usuarios; cabe destacar la palabra "capa", pues I2P es lo que se conoce como un \textit{overlay network}, una red funcionando encima de otra red. Es un concepto
 de capas con mucha similitud a la estructura de una cebolla, como veremos más adelante.
 
-El principal objetivo del proyecto es proteger el anonimato de los usuarios de la red. Para esto, se utilizan una serie de servidores \textit{proxy} intermedios llamados \textit{mixers} que proporcionan múltiples
-capas de seguridad a la comunicación. De forma breve, el papel de los mixer consiste en recibir un mensaje, que viene cifrado especialmente para ellos, y enviarlo al siguiente destinatario (probablemente otro mixer).
-El sistema funciona y otorga anonimato por hacer irrastreable al emisor original, ya que cada \texit{mixer} solo tiene información del siguiente punto de envío, de forma que ninguno de ellos conoce
+El principal objetivo del proyecto es proteger el anonimato de los usuarios de la red; para esto, I2P implementa una \textit{red mix}.
+
+\subsection{Redes Mix}
+El concepto de las redes mix existe desde 1981 [7] se utilizan una serie de servidores \textit{proxy} intermedios llamados \textit{mix} que proporcionan múltiples
+capas de seguridad a la comunicación. De forma breve, el papel de los \textit{mix} consiste en recibir un mensaje, que viene cifrado especialmente para ellos,
+y enviarlo al siguiente destinatario (probablemente otro \texti{mix}).
+El sistema funciona y otorga anonimato por hacer irrastreable al emisor original, ya que cada \texit{mix} solo tiene información del siguiente punto de envío, de forma que ninguno de ellos conoce
 ni el mensaje, ni la procedencia, ni la ruta completa.
 
+\begin{figure}
+    \includegraphics[width=\linewidth]{media/Mix Network.png}
+    \caption{Funcionamiento de una red Mix.}
+    \label{fig1}
+\end{figure}
 
+Las redes \textit{mix} se basan en paso de mensajes, por lo que toda la protección que implementan orbitan en torno a ellos. Los mensajes en una red \textit{mix} son como
+muñecas \textit{Matryoshka} \footnote{las muñecas Matryoshka son unos populares juguetes de origen ruso que consisten en un set de piezas huecas, de forma ahovada y diferentes tamaños,
+pintadas por fuera para parecer mujeres. Al tener diferentes tamaños, se pueden ir guardando unas dentro de otras, hasta que finalmente todas las piezas del set están dentro de la pieza mayor.}
+con la excepción de que todas las piezas son iguales en forma (y, por tanto, tamaño) si descontamos el mensaje interno que llevan (lo que sería la siguiente capa).
+
+Pongamos un ejemplo para entender mejor las redes \textit{mix}. Un emisor, \(A\), quiere enviar un mensaje a un receptor, \(B\). Para asegurarse de que solo B lea el mensaje, A debe encriptarlo
+con la clave pública de B, \(K_b\). Sin embargo, si un tercero, \(C\) interceptase el mensaje, y también tuviese la clave pública de B, podría llegar a averiguar el contenido del mensaje \footnote{al ser el algoritmo
+de encriptación determinista, para una misma entrada (mensaje y clave pública) el atacante tan solo tendría que probar mensajes hasta que obtuviera el mismo resultado cifrado que el interceptado, conociendo
+de esta forma el contenido del mensaje.}. Para evitar esto, al encriptar el mensaje, A añadirá una cadena aleatoria, \(R_0\), que funcionará esencialmente como \textit{sal}\footnote{el concepto de "sal"
+responde a un argumento adicional, como en el caso del mensaje encriptado, que impide romper la encriptación de un algoritmo determinista al añadir un tercer valor, desconocido, aleatorio, y normalmente tan
+largo, que imposibilita obtener el mensaje sin conocer la clave para descifrarlo} de la encriptación. De esta forma, el mensaje que A quiere enviar a B, queda así: \[K_b (R_0, mensaje)\].
+
+Ahora, A debe enviar el mensaje a un \textit{mix}. La confidencialidad de B es primordial también, por lo que su dirección (junto con el mensaje encriptado) se encripta con la clave pública del \textit{mix},
+\(K_m\). De nuevo, acorde a lo que hemos explicado, añadimos una sal aleatoria al encriptado, \(R_1\), de forma que el mensaje que manda A al \textit{mix} es el siguiente: \[K_m(R_1, K_b(R_0, mensaje), B)\]
+
+Dependiendo del número de \textit{mix} que vaya a recorrer el mensaje, tantas capas adicionales tendrá. Dado que cada capa solo puede ser desbloqueada por un \textit{mix} concreto, interceptar
+el mensaje carece de utilidad alguna para el hipotético atacante, C. Para añadir saltos adicionales, basta con repetir el procedimiento que hemos explicado: se añade una sal aleatoria, y la dirección
+del siguiente \textit{mix} en la cadena, y luego se encripta con la clave pública del mismo. De esta forma, si A quisiese enviar su mensaje primero por \textit{mix} 1, y luego por \textit{mix} 2,
+el resultado sería el siguiente: \[K_m_1(R_2, K_m_2(R_1, K_b(R_0, mensaje), B), M_2)\]
+
+\subsection{Implementación de I2P}
+
+La red I2P implementa este sistema de redes \textit{mix} por medio de voluntarios que ofrecen sus ordenadores para actuar como nodos. Cualquier ordenador puede convertirse en un nodo de la red
+I2P simplemente instalando el software "I2P router" [8]
 
 
 \section{Casos de estudio en el que se aplica la plataforma/tecnologia I2P}
@@ -78,6 +112,8 @@ La aparición de nuevas tecnologías ha conllevado la preocupación de colectivo
 
 El proyecto I2P se encuentra en auge y continua evolución para garantizarnos el 100 por ciento de seguridad e integridad de los datos y paquetes que se manejan en la red. Éste se  es resistente a ataques masivos posibilitando la ejecución de varias aplicaciones a 
 la vez ya que consta de varios modelos a nivel de seguridad y rendimiento para cada usuario que aplican esta tecnología. Las aplicaciones que se basan en esta tecnología se usan básicamente en internet, en la sección de navegación web anonimo por ejemplo.[3]
+
+\pagebreak
 
 \section{Trabajos relacionados de la plataforma/tecnología I2P}
 
@@ -103,11 +139,15 @@ Destacamos que permite enviar correo a traves de internet,Tor e I2P y ofrece web
 
 Estos son unos  ejemplos de los muchos software que existen , que usan I2P ,
 
+\pagebreak
+
 \section{Conclusión}
 Hoy dia, nuestros datos e identidad son muy importantes,navegar sin que estos esten protegidos o cifrados contribuye a que cada dia estemos expuesto
 a el robo de  nuestra información más personal y más importante aun,alguien con conocimiento podría identificarnos ya que nuestro anonimato no esta asegurado 
 poniendo en riesgo lo más importante nuestra identidad unica, Sin embargo haciendo uso de tecnologia como I2P ,la cual  están en continuo desarrollo,
 permiten nuestro anonimato, protegiendo así nuestra identidad y nuestra actividad en las redes, la cual es continuamente rastreada.
+
+\pagebreak
 
 \section{Referencias}
 
@@ -117,6 +157,8 @@ permiten nuestro anonimato, protegiendo así nuestra identidad y nuestra activid
 [4] https://geti2p.net/es/docs/api/i2ptunnel
 [5] https://www.ghacks.net/2007/06/06/anonymous-bittorrent-with-i2psnark/
 [6] https://es.wikipedia.org/wiki/Bitmessage#Bitmessage.ch
+[7] https://dl.acm.org/doi/10.1145/358549.358563
+
 
 
 \section{Funcionamiento}
