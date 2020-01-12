@@ -140,27 +140,47 @@ la vez ya que consta de varios modelos a nivel de seguridad y rendimiento para c
 
 \section{Trabajos relacionados de la plataforma/tecnología I2P}
 
-Al ser  I2P una capa de abstracción para asegurar comunicaciones anónimas,existen software que hacen uso de esto
-por tanto, destacamos los siguientes software.
+Al ser  I2P una capa de abstracción para asegurar comunicaciones anónimas,existen software que hacen uso de esto.
+\\
+
+Destacamos que la existencia de los siguientes software tiene como objetivo preservar nuestro anonimato en la red,y que el objetivo de estos no es solo preservar
+el anonimato, sino que sean compatible con otros protocolos de red, así podemos usar aplicaciones en red,que de otra forma, seriamos rastreables,
+a continuación explicaremos tres software,que consideramos que su en I2P  es indispensable.
 
 \subsection{I2PTunnel[4]}
 
-Es una herramienta que permite la comunicación sobre I2P a aplicaciones TCP/IP,su funcionalidad se basa en la creación de tuneles que pueden ser accedidos
+Es una herramienta que permite la comunicación sobre I2P, a aplicaciones TCP/IP,su funcionalidad se basa en la creación de tuneles que pueden ser accedidos
 conectandonos a puertos.
+
+\\
+Esta aplicación existe para poder comunicarnos con aplicaciones que usen TCP/IP de forma anonima , es una ventaja ya que si usaramos la aplicación TCP/IP de forma 'normal'
+nuestro anonimato no estaría asegurado.
 
 \subsection{I2PSnark[5]}
 
-Permite conectarnos a redes p2p de forma totalmente anonima.
-
-\subsection{Bitmessage.ch[6]}
-
-Es un servicio de correo electrónico que permite recibir o enviar bitmessages a traves de I2P,funcinando cifrando todos los mensajes de entrada y salida
-usando criptografía asimétrica de modo que solo receptor es capaz de poder descifrar el mensaje.
-\\
-Destacamos que permite enviar correo a traves de internet,Tor e I2P y ofrece webmail,pop3,IMAP y SMTP.  
+Permite conectarnos a redes p2p de forma totalmente anonima,ya que si no usamos I2P, y nos conectamos a una red p2p, seriamos rastreables.
 \\
 
-Estos son unos  ejemplos de los muchos software que existen , que usan I2P ,
+Su funcionamiento es similar a un cliente de torrent,agregamos torrent y estos se descargan conectandonos a la red p2p donde se localizen los archivos a descargar
+
+\subsection{PyBitmessage[6]}
+
+Es un servicio de correo electrónico que permite recibir o enviar bitmessages a traves de I2P,funciona cifrando todos los mensajes de entrada y salida
+usando criptografía asimétrica de modo que solo receptor es capaz de poder descifrar el mensaje del emisor.
+\\
+
+Destacamos que permite enviar correo a traves de internet,Tor e I2P y ofrece webmail,pop3,IMAP y SMTP,su funcionamiento es muy parecido a un cliente de correos
+pero con las ventajas de que la comunicación entre  emisor y receptor es confidencial, está asegurada la confidencialidad de dicha comunicación.  
+\\
+
+\begin{figure}
+    \includegraphics[]{media/PyBitMessage-client.png}
+    \caption{Captura de pyBitmessage.}
+    \label{fig4}
+\end{figure}
+
+Estos son unos  ejemplos de los muchos software que existen , que usan I2P ,pero actualmente existen muchos software que esta en continua desarrollo debido a que 
+I2P sigue creciendo debido a el interés de preservar nuestro anonimato.
 
 \pagebreak
 
